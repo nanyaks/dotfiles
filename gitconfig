@@ -1,0 +1,8 @@
+[user]
+	name = Loknan Nanyak
+	email = nanyaks@gmail.com
+[core]
+	excludesfile = /home/nanyaks/.gitignore_global
+	editor = vim
+[color]
+	ui = true
