@@ -5,6 +5,9 @@
 " Set non compatibility with vi
 set nocompatible
 
+" Set utf8 as standard encoding and en_US as the standard language
+set encoding=utf8
+
 " Sets how many lines of history VIM has to remember
 set history=1000
 
@@ -22,6 +25,8 @@ set showcmd
 
 " Turn on the WiLd menu
 set wildmenu
+
+set nowrap
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Other configurations for this VIM!
@@ -90,8 +95,6 @@ set tm=500
 " Enable syntax highlighting
 syntax enable
 
-" Set utf8 as standard encoding and en_US as the standard language
-set encoding=utf8
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
