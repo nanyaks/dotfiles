@@ -9,140 +9,100 @@ set history=1000
 filetype plugin indent on
 syntax on
 
-" Set to auto read when a file is changed from the outside
 set autoread
-
-
-" Turn on command display at bottom right
 set showcmd
-
-" Turn on the WiLd menu
 set wildmenu
-
-" Set it to wrap on some file types ~ html, xml, txt
-" implementation in one of the dotfiles in repo
 set nowrap
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Other configurations for this VIM!
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Highlight the current cursor-line
-set cursorline
 
-" Scroll Offset option - determine the number of context lines to see 
-" above and below the cursor
-set so=7
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Other configurations
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set cursorline					" Highlight the current cursor-line
+set so=7						" Scroll Offset option - Number of context lines 
+set ruler
+set cmdheight=2
+set hidden						" Hide buffer when abandoned; allow unsaved buffers 
+set backspace=eol,start,indent	" Configure backspace
 
 " Set wildignore filetypes
 set wildignore=*.swp,*.bak,*.pyc,*.class,*/.git/**/*,*.o,*~
 set wildignorecase
 
-"Always show current position
-set ruler
 
-" Height of the command bar
-set cmdheight=2
-
-" Buffer becomes hidden when it is abandoned; allow unsaved buffer in
-" background
-set hidden
-
-" Configure backspace so it acts as it should act
-set backspace=eol,start,indent
 
 """""""""""""""""""""""""""""""""""""""""""
-" Searches
+" => Searches
 """""""""""""""""""""""""""""""""""""""""""
 
-" Ignore case when searching
-set ignorecase
+set ignorecase					" Ignore case when searching
+set smartcase					" When searching try to be smart about cases 
+set hlsearch					" Highlight search results
+set incsearch					" Set incremental Search
+set lazyredraw					" Don't redraw while executing macros
 
-" When searching try to be smart about cases 
-set smartcase
+set showmatch					" Show matching brackets 
+set mat=2						" How many tenths of a second to blink
 
-" Highlight search results
-set hlsearch
-
-" Makes search act like search in modern browsers
-set incsearch
-
-" Don't redraw while executing macros (good performance config)
-set lazyredraw
-
-" For regular expressions turn magic on
 set magic
 
-" Show matching brackets when text indicator is over them
-set showmatch
-" How many tenths of a second to blink when matching brackets
-set mat=2
-
-" No annoying sound on errors
-set noerrorbells
+set noerrorbells				" No Bells errors at all
 set novisualbell
 set t_vb=
-set tm=500
+"set tm=500
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Enable syntax highlighting
-syntax enable
 
-" Use Unix as the standard file type
-set ffs=unix,dos,mac
+syntax enable					" Enable syntax highlighting
+set ffs=unix,dos,mac			" Use Unix as the standard file type
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 set backup
-" Turn backup off, since most stuff is in SVN, git e.t.c anyway...
 set backupdir=~/.vim/backup
 
-"set wb
-" Stop putting swap files everywhere
-set noswapfile
+set noswapfile					" Stop putting swap files everywhere
+set directory=~/.vim/backup		" Put them in backup directory
 
-" Put them in backup directory
-set directory=~/.vim/backup
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Improve session saving
+" => Improve session saving
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set sessionoptions=buffers,resize,blank,curdir,folds,help,tabpages,winpos
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set autoindent
 
-" Viewing Tabs -- kinda ugly, so i disabled it (till i can find something
-" that'll work better for me)!
-"set list
-"set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
+set list
+set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
 
-" Use spaces instead of tabs
-"set expandtab
-
-" Be smart when using tabs ;)
+"set expandtab					" Use spaces instead of tabs
 set smarttab
 
-" 1 tab == 4 spaces
-set shiftwidth=4
+set shiftwidth=4				" Tab is 4 spaces
 set tabstop=4
 
-" Linebreak on 500 characters
+" Linebreak on 80 characters
 set lbr
-"set tw=500
+"set tw=80
 
 " Folds
 set foldmethod=indent
 
+
 """""""""""""""""""""""""""""""""
 " ENVIRONMENT-SPECIFIC SETTINGS "
 """""""""""""""""""""""""""""""""
-
 
 if has('gui_running')
 	set guioptions+=e
@@ -171,19 +131,23 @@ endif
 
 
 "======================================================================
-" Custom Mappings
-"
-let mapleader = ","
+" => Custom Mappings
 "======================================================================
+
+let mapleader = ","
 
 " Fix Key codes
 " map [3~ <Del>
-map OH <Home>
-map OF <End>
+" map OH <Home>
+" map OF <End>
 " imap [3~ <Del>
-imap OH <Home>
-imap OF <End>
+" imap OH <Home>
+" imap OF <End>
 
+
+"======================================================================
+" => Plugins 
+"======================================================================
 
 let g:snippets_dir = '~/.vim/snippets/'
 
