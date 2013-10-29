@@ -69,7 +69,7 @@ set backup
 set backupdir=~/.vim/backup
 
 set noswapfile					" Stop putting swap files everywhere
-set directory=~/.vim/backup		" Put them in backup directory
+set directory=~/.vim/backup 	" Put them in backup directory
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -129,6 +129,7 @@ else
 
 endif
 
+set t_Co=256
 
 "======================================================================
 " => Custom Mappings
@@ -186,16 +187,17 @@ let g:ctrlp_mruf_relative = 1			" Remember mru from CWD
 " Other configurations 
 "==============================================================================
 
+set t_Co=256
 set omnifunc=syntaxcomplete#Complete
-
-" Remap <C-Space> for autocomplete 
-imap <C-Space> <C-x><C-o>				
-
-" Added for the vim powerline - Aug. 20 2013
-set rtp+=/home/nanyaks/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 
 " Always show the statusline
 set laststatus=2
 
-" end nnyk_ .vimrc file 
 
+" Remap <C-Space> for autocomplete 
+imap <C-Space> <C-x><C-o>
+
+" Added for the vim powerline - Aug. 20 2013
+set rtp+=/home/nanyaks/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+
+" nnyk_ .vimrc file 
