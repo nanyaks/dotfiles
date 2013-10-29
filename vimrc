@@ -2,23 +2,16 @@
 " => Generic Vim Configuration Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Set non compatibility with vi
 set nocompatible
-
-" Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
-
-" Sets how many lines of history VIM has to remember
 set history=1000
 
-" Enable filetype plugins
 filetype plugin indent on
+syntax on
 
 " Set to auto read when a file is changed from the outside
 set autoread
 
-" Set syntax highlighting on
-syntax on
 
 " Turn on command display at bottom right
 set showcmd
@@ -26,6 +19,8 @@ set showcmd
 " Turn on the WiLd menu
 set wildmenu
 
+" Set it to wrap on some file types ~ html, xml, txt
+" implementation in one of the dotfiles in repo
 set nowrap
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -95,18 +90,20 @@ set tm=500
 " Enable syntax highlighting
 syntax enable
 
-
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set backup
 " Turn backup off, since most stuff is in SVN, git e.t.c anyway...
 set backupdir=~/.vim/backup
+
 "set wb
 " Stop putting swap files everywhere
 set noswapfile
+
 " Put them in backup directory
 set directory=~/.vim/backup
 
@@ -142,25 +139,43 @@ set lbr
 " Folds
 set foldmethod=indent
 
-" GUI Settings {
-    " GVIM- (here instead of .gvimrc)
-    if has('gui_running')
-    	set guioptions+=e
-    	set guitablabel=%M\ %t
-		set gfn=Source\ Code\ Pro\ Medium\ 10 
-        set guioptions-=T           " remove the toolbar
-		set guioptions-=r
-		set guioptions-=l
-		set guioptions-=R
-		set guioptions-=L
-        set lines=40                " 40 lines of text instead of 24,
-		set number
+"""""""""""""""""""""""""""""""""
+" ENVIRONMENT-SPECIFIC SETTINGS "
+"""""""""""""""""""""""""""""""""
+
+
+if has('gui_running')
+	set guioptions+=e
+	set guitablabel=%M\ %t
+	set gfn=Source\ Code\ Pro\ Medium\ 10 
+	set guioptions-=T           " remove the toolbar
+	set guioptions-=r
+	set guioptions-=l
+	set guioptions-=R
+	set guioptions-=L
+	set lines=40                " 40 lines of text instead of 24,
+	set number
+	colorscheme jellybeans
+
+else
+	set term=builtin_ansi       " Make arrow and other keys work
+	if &t_Co >= 256
 		colorscheme jellybeans
-    else
-        set term=builtin_ansi       " Make arrow and other keys work
-    endif
-" }
+
+	elseif &t_Co < 256
+		colorscheme jellybeans
+
+	endif
+
+endif
+
+
+"======================================================================
+" Custom Mappings
 "
+let mapleader = ","
+"======================================================================
+
 " Fix Key codes
 " map [3~ <Del>
 map OH <Home>
@@ -169,12 +184,8 @@ map OF <End>
 imap OH <Home>
 imap OF <End>
 
-"======================================================================
-" Custom Mappings
-"
-let mapleader = ","
-"======================================================================
 
+let g:snippets_dir = '~/.vim/snippets/'
 
 "======================================================================
 " MINIBUFFER EXPLORER
