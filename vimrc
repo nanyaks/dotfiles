@@ -61,6 +61,10 @@ syntax enable					" Enable syntax highlighting
 set ffs=unix,dos,mac			" Use Unix as the standard file type
 
 
+if &term=~ '256color'
+	set t_ut=
+endif
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -118,7 +122,7 @@ if has('gui_running')
 	colorscheme jellybeans
 
 else
-	set term=builtin_ansi       		" Make arrow and other keys work
+	"set term=builtin_ansi       		" Make arrow and other keys work
 	if &t_Co >= 256
 		colorscheme jellybeans
 
