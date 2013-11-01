@@ -12,7 +12,7 @@ syntax on
 set autoread
 set showcmd
 set wildmenu
-set nowrap
+set wrap
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -50,7 +50,6 @@ set magic
 set noerrorbells				" No Bells errors at all
 set novisualbell
 set t_vb=
-"set tm=500
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -93,8 +92,8 @@ set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
 "set expandtab							" Use spaces instead of tabs
 set smarttab
 
-set shiftwidth=4						" Tab is 4 spaces
-set tabstop=4
+set shiftwidth=2						" Tab is 4 spaces
+set tabstop=2
 
 " Linebreak on 80 characters
 set lbr
@@ -127,7 +126,7 @@ else
 		colorscheme jellybeans
 
 	elseif &t_Co < 256
-		colorscheme jellybeans
+		colorscheme default
 
 	endif
 
@@ -141,30 +140,35 @@ set t_Co=256
 
 let mapleader = ","
 
+" For moving between tabs
 noremap <C-J>     <C-W>j
 noremap <C-K>     <C-W>k
 noremap <C-H>     <C-W>h
 noremap <C-L>     <C-W>l
 
+" Remap for text wrapping
 nmap j gj
 nmap k gk
 
+" Fly between buffers
+nnoremap <leader>l :ls<CR>:b<space>
+
 
 "======================================================================
-" => Plugins 
+" => Plugins
 "======================================================================
 
 let g:snippets_dir = '~/.vim/snippets/'
 
 
 "==============================================================================
-" PATHOGEN PLUGIN
+" PATHOGEN
 "==============================================================================
 call pathogen#infect()
-
+call pathogen#helptags()
 
 "==============================================================================
-" Tagbar 
+" Tagbar
 "==============================================================================
 nmap <F8> :TagbarToggle<CR>
 
