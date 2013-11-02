@@ -86,14 +86,14 @@ set sessionoptions=buffers,resize,blank,curdir,folds,help,tabpages,winpos
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set autoindent
 
-set list
-set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
+"set list
+"set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
 
 "set expandtab							" Use spaces instead of tabs
 set smarttab
 
-set shiftwidth=2						" Tab is 4 spaces
-set tabstop=2
+set shiftwidth=4						" Tab is 4 spaces
+set tabstop=4
 
 " Linebreak on 80 characters
 set lbr
