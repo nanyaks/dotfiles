@@ -62,9 +62,9 @@ syntax enable                           " Enable syntax highlighting
 set ffs=unix,dos,mac                    " Use Unix as the standard file type
 
 
-if &term=~ '256color'
-    set t_ut=
-endif
+"if &term=~ '256color'
+"    set t_ut=
+"endif
 
 "==============================================================================
 " => Files, backups and undo
@@ -110,6 +110,8 @@ set foldmethod=indent
 " ENVIRONMENT-SPECIFIC SETTINGS "
 "==============================================================================
 
+set t_Co=256
+
 if has('gui_running')
     set guioptions+=e
     set guitablabel=%M\ %t
@@ -134,7 +136,6 @@ else
 
 endif
 
-set t_Co=256
 
 "==============================================================================
 " => Custom Mappings
