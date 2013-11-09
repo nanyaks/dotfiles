@@ -89,8 +89,8 @@ set sessionoptions=buffers,resize,blank,curdir,folds,help,tabpages,winpos
 set autoindent
 
 set list
-"set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
-set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:¬,trail:·
+set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
+"set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:¬,trail:·
 
 set expandtab                           " Use spaces instead of tabs
 set smarttab
@@ -100,7 +100,6 @@ set tabstop=4
 
 " Linebreak on 80 characters
 set linebreak
-"set tw=80
 
 " Folds
 set foldmethod=indent
@@ -195,8 +194,9 @@ let g:ctrlp_mruf_max = 350
 let g:ctrlp_mruf_exclude = '/tmp/.*\|/temp/.*'
 let g:ctrlp_mruf_relative = 1           " Remember mru from CWD
 
-" Map <leader>f to open CtrlP in buffer mode
-nnoremap <silent> <leader>f :CtrlPBuffer<cr>
+
+    " Mappings
+    nnoremap <silent> <leader>f :CtrlPBuffer<cr>
 
 
 "==============================================================================
