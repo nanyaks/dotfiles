@@ -66,6 +66,9 @@ set ffs=unix,dos,mac                    " Use Unix as the standard file type
 "    set t_ut=
 "endif
 
+" For the molokai colorscheme
+let g:molokai_original = 1
+
 "==============================================================================
 " => Files, backups and undo
 "==============================================================================
@@ -121,12 +124,12 @@ if has('gui_running')
     set guioptions-=R
     set guioptions-=L
     set lines=40                        " 40 lines of text instead of 24,
-    colorscheme jellybeans
+    colorscheme molokai
 
 else
     "set term=builtin_ansi              " Make arrow and other keys work
     if &t_Co >= 256
-        colorscheme jellybeans
+        colorscheme molokai
 
     elseif &t_Co < 256
         colorscheme default
