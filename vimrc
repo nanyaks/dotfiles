@@ -1,5 +1,5 @@
 "==============================================================================
-" => Vim Configuration Settings
+" => <nnyk_> .vimrc
 "==============================================================================
 
 set nocompatible
@@ -166,24 +166,30 @@ imap <C-Space> <C-x><C-o>
 let g:snippets_dir = '~/.vim/snippets/'
 
 
-"==============================================================================
-" PATHOGEN
-"==============================================================================
+""""""""""""""""""""""""""
+"  Pathogen configuaton  "
+""""""""""""""""""""""""""
+
 call pathogen#infect()
 call pathogen#helptags()
 
-"==============================================================================
-" Tagbar
-"==============================================================================
+
+
+""""""""""""""""""""""""""
+"  Tagbar configuration  "
+""""""""""""""""""""""""""
+
 nmap <F8> :TagbarToggle<CR>
 
 let g:tagbar_left = 1                   " Put the tagbar window on the left
 let g:tagbar_width = 30                 " Set the width to 30 characters
 
 
-"==============================================================================
-" CtrlP
-"==============================================================================
+
+"""""""""""""""""""""""""
+"  CtrlP configuration  "
+"""""""""""""""""""""""""
+
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 let g:ctrlp_switch_buffer = 'Et'
@@ -199,6 +205,22 @@ let g:ctrlp_mruf_relative = 1           " Remember mru from CWD
     nnoremap <silent> <leader>f :CtrlPBuffer<cr>
 
 
+
+"""""""""""""""""""""""""""""
+"  Ultisnips "
+"""""""""""""""""""""""""""""
+let g:UltiSnipsSnippetsDir = '~/.vim/bundle/ultisnips/UltiSnips'
+let g:snips_author = 'Nanyak Loknan S.'
+
+	""""""""""""""""""""""""
+	"  ultisnips triggers  "
+	""""""""""""""""""""""""
+	let g:UltiSnipsExpandTrigger="<tab>"
+	let g:UltiSnipsListSnippets="<c-tab>"
+	let g:UltiSnipsJumpForwardTrigger="<c-j>"
+	let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
+
 "==============================================================================
 " Other configurations
 "==============================================================================
@@ -212,4 +234,4 @@ set laststatus=2
 " Vim powerline
 set rtp+=/home/nanyaks/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 
-" nnyk_ .vimrc file
+" </nnyk_> .vimrc file
