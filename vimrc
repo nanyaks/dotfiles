@@ -12,8 +12,14 @@ syntax on
 set autoread
 set showcmd
 set hidden
-set wildmenu
 set wrap
+
+"""""""""""""""""""""""""""""""""""""""""""
+"  Tab completion :: make a bit smarter!  "
+"""""""""""""""""""""""""""""""""""""""""""
+
+set wildmenu
+set wildmode="list:full"
 
 
 "==============================================================================
@@ -74,7 +80,8 @@ set ffs=unix,dos,mac                    " Use Unix as the standard file type
 set backup
 set backupdir=~/.vim/backup
 
-set noswapfile                          " Stop putting swap files everywhere
+"set noswapfile                          " Stop putting swap files everywhere
+set swapfile
 set directory=~/.vim/backup             " Put them in backup directory
 
 
