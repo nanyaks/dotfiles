@@ -5,6 +5,7 @@
 	set nocompatible
 	set encoding=utf8
 	set history=1000
+	set title
 
 	filetype plugin indent on
 	syntax on
@@ -16,9 +17,8 @@
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-	set wildmenu 							"  Tab completion :: make a bit smarter!  "
+	set wildmenu 							"  Tab completion :: make a bit smarter!
 	set wildmode="list:full"
-
 
 	set number
 	set cursorline                          " Highlight the current cursor-line
@@ -28,16 +28,16 @@
 	set backspace=eol,start,indent          " Configure backspace
 
 	" Set wildignore filetypes
-	set wildignore=*.swp,*.bak,*.pyc,*.class,*/.git/**/*,*.o,*~
+	set wildignore=*.swp,*.bak,*.pyc,*.class,*/.git/**/*,*.o,*/.svn/**/*,*/.hg/**/*
 	set wildignorecase
 
-	set noerrorbells
 	set novisualbell
 	set t_vb=
 
 	set splitright
 	set splitbelow
 
+	set lazyredraw                          " Don't redraw while executing macros
 
 "==============================================================================
 " => Searches
@@ -47,12 +47,10 @@
 	set smartcase                           " When searching try to be smart about cases
 	set hlsearch                            " Highlight search results
 	set incsearch                           " Set incremental Search
-	set lazyredraw                          " Don't redraw while executing macros
+	set magic
 
 	set showmatch                           " Show matching brackets
 	set mat=2                               " How many tenths of a second to blink
-
-	set magic
 
 
 "==============================================================================
@@ -163,8 +161,9 @@
 "==============================================================================
 
 	let mapleader = ","
+	let g:mapleader = ","
 
-	" For moving between tabs
+	" Move between splits more easily
 	noremap <C-J>     <C-W>j
 	noremap <C-K>     <C-W>k
 	noremap <C-H>     <C-W>h
@@ -174,12 +173,21 @@
 	nmap j gj
 	nmap k gk
 
-	" Fly between buffers
+	" Fly between buffers - same as :CtrlPBuffer which i mapped to <leader>f
 	nnoremap <leader>l :ls<CR>:b<space>
+
+	" Close a buffer without closing the whole window.
+	nnoremap <silent> <leader>d :Bdelete<cr>
 
 	" Remap <C-Space> for autocomplete
 	imap <C-Space> <C-x><C-o>
 
+	" Rename the current file
+	noremap <leader>n :call RenameFile()<cr>
+
+	" From phy1729 -- for full screen help files.
+	" com! -narg=1 -complete=help H h <args> <bar> only <-- don't understand
+	" it yet.
 "==============================================================================
 " Other configurations
 "==============================================================================
@@ -240,15 +248,14 @@
 		nnoremap <silent> <leader>f :CtrlPBuffer<cr>
 
 
-
 	"""""""""""""""""""""""""""""
 	"  Ultisnips "
 	"""""""""""""""""""""""""""""
+
 		let g:UltiSnipsSnippetsDir = '~/.vim/bundle/ultisnips/UltiSnips'
 		let g:snips_author = 'Nanyak Loknan S.'
 
-		""""""""""""""""""""""""
-		"  ultisnips triggers  "
+		"  triggers  "
 		""""""""""""""""""""""""
 			let g:UltiSnipsExpandTrigger="<tab>"
 			let g:UltiSnipsListSnippets="<c-tab>"
@@ -267,13 +274,16 @@
 		let g:startify_files_number = 14
 		let g:startify_custom_header = [
 					\ '',
+					\ '------------M-----M---------M-----M-------------',
 					\ '------------M-----M--MMMMM--M-----M-------------',
 					\ '-------------M---M-----M----MM---MM-------------',
 					\ '--------------M-M------M----M-M-M-M-------------',
 					\ '---------------M-------M----M--M--M-------------',
 					\ '---------------------MMMMM----------------------',
 					\ '',
+					\ '',
 					\]
 "
 "
 " </nnyk_> .vimrc file
+
