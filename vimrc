@@ -135,6 +135,43 @@
 
 	endif
 
+""""""""""""""""""
+"  autocommands  "
+"  inspired from athaeryns vimrc file. Adding only the commands i understand
+""""""""""""""""""
+augroup Misc
+	autocmd!
+
+	" Hello and Goodbye!
+	autocmd VimEnter * echo "Welcome to this Session, Loknan... Init Sage Mode!"
+	autocmd VimLeave * echo "Sage Mode Deactivated!"
+
+augroup END
+
+
+augroup Filetypes
+
+	autocmd!
+
+	" For man pages, dont show the listchars and exit with q
+	autocmd FileType man set nolist | nnoremap q :q!<cr>
+
+	" Dont show list chars for git .COMMIT_MSG files
+	autocmd FileType gitcommit set nolist
+	autocmd FileType gitconfig set nolist
+
+augroup END
+
+augroup Markdown
+
+	"autocmd!
+	
+	" Make all text files markdown.
+	autocmd BufNewFile,BufRead *.{txt,text} set filetype=markdown
+
+augroup END
+
+
 """""""""""""""
 "  Functions  "
 """""""""""""""
