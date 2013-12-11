@@ -186,6 +186,16 @@ augroup END
 		endif
 	endfunction
 
+""""""""""""""
+"  commands  "
+""""""""""""""
+" Edit notes file
+command! Notes :edit ~/notes
+"
+" Use scratch buffer for quick thoughts.
+" refactor this to call function -> empty the file and open new.
+command! Scratch :edit ~/scratch
+	
 
 """""""""""""""""""
 "  Abbreviations  "
