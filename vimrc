@@ -109,8 +109,6 @@
 " ENVIRONMENT-SPECIFIC SETTINGS "
 "==============================================================================
 
-	set t_Co=256
-
 	if has('gui_running')
 		set guioptions+=e
 		set guitablabel=%M\ %t
