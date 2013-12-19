@@ -31,7 +31,7 @@
 	set wildignore=*.swp,*.bak,*.pyc,*.class,*/.git/**/*,*.o,*/.svn/**/*,*/.hg/**/*
 	set wildignorecase
 
-	set novisualbell
+	set visualbell
 	set t_vb=
 
 	set splitright
@@ -90,7 +90,8 @@
 	set autoindent
 
 	set list
-	set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
+	"set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
+	set listchars=tab:┊\ ,extends:›,precedes:‹,nbsp:·,trail:·
 
 	"set expandtab                           " Use spaces instead of tabs
 	set smarttab
