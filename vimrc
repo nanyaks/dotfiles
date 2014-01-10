@@ -1,7 +1,3 @@
-"==============================================================================
-" => <nnyk_> .vimrc
-"==============================================================================
-
 	set nocompatible
 	set encoding=utf8
 	set history=1000
@@ -15,9 +11,8 @@
 	set hidden
 	set wrap
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-	set wildmenu 							"  Tab completion :: make a bit smarter!
+	set wildmenu 							"  Tab completion :: make smarter
 	set wildmode="list:full"
 
 	set number
@@ -40,7 +35,7 @@
 	set lazyredraw                          " Don't redraw while executing macros
 
 "==============================================================================
-" => Searches
+" => Search
 "==============================================================================
 
 	set ignorecase                          " Ignore case when searching
@@ -61,11 +56,6 @@
 	set ffs=unix,dos,mac                    " Use Unix as the standard file type
 
 
-	"if &term=~ '256color'
-	"    set t_ut=
-	"endif
-
-
 "==============================================================================
 " => Files, backups and undo
 "==============================================================================
@@ -73,9 +63,8 @@
 	set backup
 	set backupdir=~/.vim/backup
 
-	"set noswapfile                          " Stop putting swap files everywhere
 	set swapfile
-	set directory=~/.vim/backup             " Put them in backup directory
+	set directory=~/.vim/backup             " Put swapfiles in backup directory
 
 
 "==============================================================================
@@ -90,7 +79,6 @@
 	set autoindent
 
 	set list
-	"set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
 	set listchars=tab:┊\ ,extends:›,precedes:‹,nbsp:·,trail:·
 
 	"set expandtab                           " Use spaces instead of tabs
@@ -99,7 +87,6 @@
 	set shiftwidth=4                        " Tab is 4 spaces
 	set tabstop=4
 
-	" Linebreak on 80 characters
 	set linebreak
 
 	" Folds
@@ -126,10 +113,8 @@
 		"set term=builtin_ansi              " Make arrow and other keys work
 		if &t_Co >= 256
 			colorscheme molok
-
 		elseif &t_Co < 256
 			colorscheme default
-
 		endif
 
 	endif
@@ -153,7 +138,7 @@ augroup Filetypes
 	autocmd!
 
 	" For man pages, dont show the listchars and exit with q
-	autocmd FileType man set nolist | nnoremap q :q!<cr>
+	autocmd FileType help set nolist | nnoremap q :q!<cr>
 
 	" Dont show list chars for git .COMMIT_MSG files
 	autocmd FileType gitcommit set nolist
@@ -174,7 +159,7 @@ augroup END
 """""""""""""""
 "  Functions  "
 """""""""""""""
-	" Rename current file (Stolen from athaeryn)
+	" Rename current file (borrowed from athaeryn)
 	function! RenameFile()
 		let old_name = expand('%')
 		let new_name = input('New File Name: ', expand('%'), 'file')
@@ -232,8 +217,9 @@ command! Scratch :edit ~/scratch
 	noremap <leader>n :call RenameFile()<cr>
 
 	" From phy1729 -- for full screen help files.
-	" com! -narg=1 -complete=help H h <args> <bar> only <-- don't understand
-	" it yet.
+	" com! -narg=1 -complete=help H h <args> <bar> only
+
+
 "==============================================================================
 " Other configurations
 "==============================================================================
