@@ -285,7 +285,7 @@ command! Scratch :edit ~/scratch
 	"""""""""""""""""""""""""""""
 
 		let g:UltiSnipsSnippetsDir = '~/.vim/bundle/ultisnips/UltiSnips'
-		let g:snips_author = 'Nanyak Loknan S.'
+		let g:snips_author = 'Nanyak Loknan S. <nanyaks@gmail.com>'
 
 		"  triggers  "
 		""""""""""""""""""""""""
