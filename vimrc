@@ -26,7 +26,7 @@
 	set wildignore=*.swp,*.bak,*.pyc,*.class,*/.git/**/*,*.o,*/.svn/**/*,*/.hg/**/*
 	set wildignorecase
 
-	set visualbell
+	set novisualbell
 	set t_vb=
 
 	set splitright
@@ -215,9 +215,6 @@ command! Scratch :edit ~/scratch
 
 	" Rename the current file
 	noremap <leader>n :call RenameFile()<cr>
-
-	" From phy1729 -- for full screen help files.
-	" com! -narg=1 -complete=help H h <args> <bar> only
 
 
 "==============================================================================
