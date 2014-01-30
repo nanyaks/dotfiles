@@ -292,6 +292,28 @@ command! Scratch :edit ~/scratch
 			let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 
+	"""""""""""""""""
+	"  neocomplete  "
+	"""""""""""""""""
+	" configuration not complete; dont understand the rest on the github page
+
+	let g:neocomplete#enable_at_startup = 0
+	let g:neocomplete#max_list = 100 " default
+	let g:neocomplete#enable_smart_case = 1
+	let g:neocomplete#min_keyword_length = 3
+
+	" Enable omni completion
+	autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+	autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+	autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+	autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+	autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+	" simple mapping to start and stop neocomplete
+	nnoremap <leader>ne :NeoCompleteEnable <cr>
+	nnoremap <leader>nd :NeoCompleteDisable <cr>
+
+
 	""""""""""""""""""
 	"  vim startify  "
 	""""""""""""""""""
