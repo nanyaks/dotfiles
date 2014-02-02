@@ -26,8 +26,10 @@
 	set wildignore=*.swp,*.bak,*.pyc,*.class,*/.git/**/*,*.o,*/.svn/**/*,*/.hg/**/*
 	set wildignorecase
 
-	set novisualbell
-	set t_vb=
+	set noerrorbells visualbell t_vb=
+	if has('autocmd')
+		autocmd GUIEnter * set visualbell t_vb=
+	endif
 
 	set splitright
 	set splitbelow
@@ -108,7 +110,6 @@
 		set guioptions-=L
 		set lines=40                        " 40 lines of text instead of 24,
 		colorscheme molok
-
 	else
 		"set term=builtin_ansi              " Make arrow and other keys work
 		if &t_Co >= 256
@@ -116,7 +117,6 @@
 		elseif &t_Co < 256
 			colorscheme default
 		endif
-
 	endif
 
 """"""""""""""""""
@@ -124,8 +124,8 @@
 "  inspired from athaeryns vimrc file. Adding only the commands i understand
 """"""""""""""""""
 augroup Misc
-	autocmd!
 
+	autocmd!
 	" Hello and Goodbye!
 	autocmd VimEnter * echo "Welcome to this Session, Loknan... Init Sage Mode!"
 	autocmd VimLeave * echo "Sage Mode Deactivated!"
@@ -136,11 +136,7 @@ augroup END
 augroup Filetypes
 
 	autocmd!
-
-	" For man pages, dont show the listchars and exit with q
 	autocmd FileType help set nolist | nnoremap q :q!<cr>
-
-	" Dont show list chars for git .COMMIT_MSG files
 	autocmd FileType gitcommit set nolist
 	autocmd FileType gitconfig set nolist
 
@@ -149,7 +145,6 @@ augroup END
 augroup Markdown
 
 	"autocmd!
-	
 	" Make all text files markdown.
 	autocmd BufNewFile,BufRead *.{txt,text} set filetype=markdown
 
@@ -159,7 +154,6 @@ augroup END
 """""""""""""""
 "  Functions  "
 """""""""""""""
-	" Rename current file (borrowed from athaeryn)
 	function! RenameFile()
 		let old_name = expand('%')
 		let new_name = input('New File Name: ', expand('%'), 'file')
@@ -170,16 +164,12 @@ augroup END
 		endif
 	endfunction
 
+
 """"""""""""""
 "  commands  "
 """"""""""""""
-" Edit notes file
 command! Notes :edit ~/notes
-"
-" Use scratch buffer for quick thoughts.
-" refactor this to call function -> empty the file and open new.
-command! Scratch :edit ~/scratch
-	
+
 
 """""""""""""""""""
 "  Abbreviations  "
@@ -204,7 +194,7 @@ command! Scratch :edit ~/scratch
 	nmap j gj
 	nmap k gk
 
-	" Fly between buffers - same as :CtrlPBuffer which i mapped to <leader>f
+	" Fly between buffers
 	nnoremap <leader>l :ls<CR>:b<space>
 
 	" Close a buffer without closing the whole window.
@@ -334,6 +324,15 @@ command! Scratch :edit ~/scratch
 					\ '',
 					\ '',
 					\]
+
+	"""""""""""""""""
+	"  scratch.vim  "
+	"""""""""""""""""
+	"g:scratch_disable = 0
+
+	"g:scratch_height = 10
+	"g:scratch_top = 1
+	
 "
 "
 " </nnyk_> .vimrc file
