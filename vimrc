@@ -108,6 +108,7 @@
 		set guioptions-=l
 		set guioptions-=R
 		set guioptions-=L
+		set guioptions-=m "Remove the menubar
 		set lines=40                        " 40 lines of text instead of 24,
 		colorscheme molok
 	else
