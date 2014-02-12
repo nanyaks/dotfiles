@@ -109,7 +109,6 @@
 		set guioptions-=R
 		set guioptions-=L
 		set guioptions-=m "Remove the menubar
-		set lines=40                        " 40 lines of text instead of 24,
 		colorscheme molok
 	else
 		"set term=builtin_ansi              " Make arrow and other keys work
@@ -122,12 +121,15 @@
 
 """"""""""""""""""
 "  autocommands  "
-"  inspired from athaeryns vimrc file. Adding only the commands i understand
+"
+"  This section assumes the version of vim running has autocmd.
+"  A big outer if has('autocmd') check, could come in handy for systems that dont
+"  support the feature..
 """"""""""""""""""
+
 augroup Misc
 
 	autocmd!
-	" Hello and Goodbye!
 	autocmd VimEnter * echo "Welcome to this Session, Loknan... Init Sage Mode!"
 	autocmd VimLeave * echo "Sage Mode Deactivated!"
 
@@ -137,7 +139,7 @@ augroup END
 augroup Filetypes
 
 	autocmd!
-	autocmd FileType help set nolist | nnoremap q :q!<cr>
+	autocmd FileType help set nolist | nnoremap q :q<cr>
 	autocmd FileType gitcommit set nolist
 	autocmd FileType gitconfig set nolist
 
@@ -146,7 +148,6 @@ augroup END
 augroup Markdown
 
 	"autocmd!
-	" Make all text files markdown.
 	autocmd BufNewFile,BufRead *.{txt,text} set filetype=markdown
 
 augroup END
@@ -237,16 +238,49 @@ command! Notes :edit ~/notes
 		call pathogen#helptags()
 
 
-
 	""""""""""""""""""""""""""
 	"  Tagbar configuration  "
 	""""""""""""""""""""""""""
 
-		nmap <F8> :TagbarToggle<CR>
+		"nmap <F8> :TagbarToggle<CR>
 
-		let g:tagbar_left = 1                   " Put the tagbar window on the left
-		let g:tagbar_width = 30                 " Set the width to 30 characters
+		"let g:tagbar_left = 1                   " Put the tagbar window on the left
+		"let g:tagbar_width = 30                 " Set the width to 30 characters
 
+	
+	""""""""""""""
+	"  Fugitive  "
+	""""""""""""""
+		" gd: git diff (as text)
+		nnoremap <leader>gd :Gvsplit! diff<cr>
+		" gv: visual diff
+		nnoremap <leader>gv :Gdiff<cr>
+		" gV: (attempt to) close visual diff
+		"nnoremap <leader>gV <C-w>h:q<cr><C-^>
+		" ge: Prompt to edit file
+		nnoremap <leader>ge :Gedit<Space>
+		" gb: Blame
+		nnoremap <leader>gb :Gblame<cr>
+		" gm: Prompt to move
+		nnoremap <leader>gm :Gmove<Space>
+		" gm: Prompt to remove
+		nnoremap <leader>gr :Gremove<Space>
+		" gm: Prompt to grep
+		nnoremap <leader>gg :Ggrep<Space>
+		" gl: Show git log
+		nnoremap <leader>gl :Glog<cr><cr>:cw<cr>
+		" gr: (read) checkout --
+		nnoremap <leader>gr :Gread<cr>
+		" gx: prompt to eXecute git command
+		nnoremap <leader>gx :Git<Space>
+		" gc: git commit
+		nnoremap <leader>gc :Gcommit<cr>
+		" gC: git commit --amend
+		nnoremap <leader>gC :Gcommit --amend<cr>
+		" gp: git commit --patch
+		nnoremap <leader>gp :Gcommit --patch<cr>
+		" gs: git status
+		nnoremap <leader>gs :Gstatus<cr>
 
 
 	"""""""""""""""""""""""""
