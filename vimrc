@@ -238,16 +238,6 @@ command! Notes :edit ~/notes
 		call pathogen#helptags()
 
 
-	""""""""""""""""""""""""""
-	"  Tagbar configuration  "
-	""""""""""""""""""""""""""
-
-		"nmap <F8> :TagbarToggle<CR>
-
-		"let g:tagbar_left = 1                   " Put the tagbar window on the left
-		"let g:tagbar_width = 30                 " Set the width to 30 characters
-
-	
 	""""""""""""""
 	"  Fugitive  "
 	""""""""""""""
