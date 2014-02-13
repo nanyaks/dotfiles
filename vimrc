@@ -358,6 +358,12 @@ command! Notes :edit ~/notes
 	"g:scratch_height = 10
 	"g:scratch_top = 1
 	
+	
+	""""""""""""""""""""""
+	"  php.vim settings  "
+	""""""""""""""""""""""
+	let php_sql_query = 1
+	let php_html_in_strings = 1
 "
 "
 " </nnyk_> .vimrc file
