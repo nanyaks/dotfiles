@@ -108,7 +108,7 @@
 		set guioptions-=l
 		set guioptions-=R
 		set guioptions-=L
-		set guioptions-=m "Remove the menubar
+		set guioptions+=m "Remove the menubar
 		colorscheme molok
 	else
 		"set term=builtin_ansi              " Make arrow and other keys work
@@ -361,4 +361,3 @@ command! Notes :edit ~/notes
 "
 "
 " </nnyk_> .vimrc file
-
