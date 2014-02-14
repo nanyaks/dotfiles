@@ -1,44 +1,54 @@
-set nocompatible
-set encoding=utf8
-set history=1000
-set title
+" Config {{{1
 
-filetype plugin indent on
-syntax on
+	" Filetype {{{2
 
-set autoread
-set showcmd
-set hidden
-set wrap
+	filetype plugin indent on
+	syntax on
+	
+	" General Settings for the whole file {{{2
+
+	set nocompatible
+	set encoding=utf8
+	set history=1000
+	set title
 
 
-set wildmenu 							"  Tab completion :: make smarter
-set wildmode="list:full"
+	set autoread
+	set showcmd
+	set hidden
+	set wrap
 
-set number
-set cursorline                          " Highlight the current cursor-line
-set so=7                                " Scroll Offset option - Number of context lines
-set ruler
-set cmdheight=2
-set backspace=eol,start,indent          " Configure backspace
+	set wildmenu 							"  Tab completion :: make smarter
+	set wildmode="list:full"
 
-" Set wildignore filetypes
-set wildignore=*.swp,*.bak,*.pyc,*.class,*/.git/**/*,*.o,*/.svn/**/*,*/.hg/**/*
-set wildignorecase
+	set number
+	set cursorline                          " Highlight the current cursor-line
+	set so=7                                " Scroll Offset option - Number of context lines
+	set ruler
+	set cmdheight=2
+	set backspace=eol,start,indent          " Configure backspace
+
+	set wildignore=*.swp,*.bak,*.pyc,*.class,*/.git/**/*,*.o,*/.svn/**/*,*/.hg/**/*
+	set wildignorecase
+
+
+" Bells and Whistles {{{2
 
 set noerrorbells visualbell t_vb=
 if has('autocmd')
 	autocmd GUIEnter * set visualbell t_vb=
 endif
 
+
+" Splits {{{2
+
 set splitright
 set splitbelow
 
 set lazyredraw                          " Don't redraw while executing macros
 
-"==============================================================================
-" => Search
-"==============================================================================
+
+" Search Related {{{2
 
 set ignorecase                          " Ignore case when searching
 set smartcase                           " When searching try to be smart about cases
@@ -50,17 +60,13 @@ set showmatch                           " Show matching brackets
 set mat=2                               " How many tenths of a second to blink
 
 
-"==============================================================================
-" => Colors and Fonts
-"==============================================================================
+" Colors and Fonts {{{2
 
 syntax enable                           " Enable syntax highlighting
 set ffs=unix,dos,mac                    " Use Unix as the standard file type
 
 
-"==============================================================================
-" => Files, backups and undo
-"==============================================================================
+" Files, backups and undo {{{2
 
 set backup
 set backupdir=~/.vim/backup
@@ -69,9 +75,8 @@ set swapfile
 set directory=~/.vim/backup             " Put swapfiles in backup directory
 
 
-"==============================================================================
-" => Improve session saving
-"==============================================================================
+" Session Saving {{{2
+
 set sessionoptions=buffers,resize,blank,curdir,folds,help,tabpages,winpos
 
 
