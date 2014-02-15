@@ -1,17 +1,16 @@
 " Config {{{1
 
+" General Filetype Setting {{{2
 	" Filetype {{{2
-
 	filetype plugin indent on
 	syntax on
 	
+	
 	" General Settings for the whole file {{{2
-
 	set nocompatible
 	set encoding=utf8
 	set history=1000
 	set title
-
 
 	set autoread
 	set showcmd
@@ -31,33 +30,30 @@
 	set wildignore=*.swp,*.bak,*.pyc,*.class,*/.git/**/*,*.o,*/.svn/**/*,*/.hg/**/*
 	set wildignorecase
 
+	set lazyredraw                          " Don't redraw while executing macros
+
+	set showmatch                           " Show matching brackets
+	set mat=2                               " How many tenths of a second to blink
 
 " Bells and Whistles {{{2
-
-set noerrorbells visualbell t_vb=
-if has('autocmd')
-	autocmd GUIEnter * set visualbell t_vb=
-endif
-
+	" Error and Visual Bells
+	set noerrorbells visualbell t_vb=
+	if has('autocmd')
+		autocmd GUIEnter * set visualbell t_vb=
+	endif
 
 " Splits {{{2
+	" Handle splits
+	set splitright
+	set splitbelow
 
-set splitright
-set splitbelow
-
-set lazyredraw                          " Don't redraw while executing macros
-
-
-" Search Related {{{2
-
-set ignorecase                          " Ignore case when searching
-set smartcase                           " When searching try to be smart about cases
-set hlsearch                            " Highlight search results
-set incsearch                           " Set incremental Search
-set magic
-
-set showmatch                           " Show matching brackets
-set mat=2                               " How many tenths of a second to blink
+" Search {{{2
+	" Search settings
+	set ignorecase                          " Ignore case when searching
+	set smartcase                           " When searching try to be smart about cases
+	set hlsearch                            " Highlight search results
+	set incsearch                           " Set incremental Search
+	set magic
 
 
 " Colors and Fonts {{{2
@@ -330,19 +326,18 @@ let g:snips_author = 'Nanyak Loknan S. <nanyaks@gmail.com>'
 
 "  triggers  "
 """"""""""""""""""""""""
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsListSnippets="<c-tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsListSnippets = "<c-tab>"
+let g:UltiSnipsJumpForwardTrigger = "<c-j>"
+let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
+let g:neocomplete#enable_fuzzy_completion = 0
 
 """""""""""""""""
 "  neocomplete  "
 """""""""""""""""
-" configuration not complete; dont understand the rest on the github page
 
 let g:neocomplete#enable_at_startup = 0
-let g:neocomplete#max_list = 100 " default
+let g:neocomplete#max_list = 50 " default
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#min_keyword_length = 3
 
