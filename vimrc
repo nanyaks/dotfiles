@@ -1,134 +1,99 @@
-" Config {{{1
+" Core Settings {{{1
 
-" General Filetype Setting {{{2
-	" Filetype {{{2
-	filetype plugin indent on
-	syntax on
-	
-	
-	" General Settings for the whole file {{{2
-	set nocompatible
-	set encoding=utf8
-	set history=1000
-	set title
+" Filetype {{{2
+filetype plugin indent on
+syntax on
 
-	set autoread
-	set showcmd
-	set hidden
-	set wrap
+" General Settings for the whole file {{{2
+set nocompatible
+set encoding=utf8
+set history=1000
+set title
 
-	set wildmenu 							"  Tab completion :: make smarter
-	set wildmode="list:full"
+set autoread
+set showcmd
+set hidden
+set wrap
 
-	set number
-	set cursorline                          " Highlight the current cursor-line
-	set so=7                                " Scroll Offset option - Number of context lines
-	set ruler
-	set cmdheight=2
-	set backspace=eol,start,indent          " Configure backspace
+set wildmenu
+set wildmode="list:full"
 
-	set wildignore=*.swp,*.bak,*.pyc,*.class,*/.git/**/*,*.o,*/.svn/**/*,*/.hg/**/*
-	set wildignorecase
+set number
+set cursorline                          " Highlight the current cursor-line
+set so=7                                " Scroll Offset option - Number of context lines
+set ruler
+set cmdheight=2
+set backspace=eol,start,indent          " Configure backspace
 
-	set lazyredraw                          " Don't redraw while executing macros
+set wildignore=*.swp,*.bak,*.pyc,*.class,*/.git/**/*,*.o,*/.svn/**/*,*/.hg/**/*
+set wildignorecase
 
-	set showmatch                           " Show matching brackets
-	set mat=2                               " How many tenths of a second to blink
+set lazyredraw                          " Don't redraw while executing macros
+
+set showmatch                           " Show matching brackets
+set mat=2                               " How many tenths of a second to blink
+
 
 " Bells and Whistles {{{2
-	" Error and Visual Bells
-	set noerrorbells visualbell t_vb=
-	if has('autocmd')
-		autocmd GUIEnter * set visualbell t_vb=
-	endif
+set noerrorbells visualbell t_vb=
+if has('autocmd')
+	autocmd GUIEnter * set visualbell t_vb=
+endif
 
 " Splits {{{2
-	" Handle splits
-	set splitright
-	set splitbelow
+set splitright
+set splitbelow
 
 " Search {{{2
-	" Search settings
-	set ignorecase                          " Ignore case when searching
-	set smartcase                           " When searching try to be smart about cases
-	set hlsearch                            " Highlight search results
-	set incsearch                           " Set incremental Search
-	set magic
+set ignorecase
+set smartcase
+set hlsearch
+set incsearch
 
+set magic
 
 " Colors and Fonts {{{2
-
-syntax enable                           " Enable syntax highlighting
+syntax enable
 set ffs=unix,dos,mac                    " Use Unix as the standard file type
 
 
 " Files, backups and undo {{{2
-
 set backup
 set backupdir=~/.vim/backup
-
 set swapfile
-set directory=~/.vim/backup             " Put swapfiles in backup directory
+set directory=~/.vim/backup
 
 
 " Session Saving {{{2
-
 set sessionoptions=buffers,resize,blank,curdir,folds,help,tabpages,winpos
 
 
-"==============================================================================
-" => Text, tab and indent related
-"==============================================================================
+" Text, tab and indent related {{{2
 set autoindent
-
-set list
-set listchars=tab:┊\ ,extends:›,precedes:‹,nbsp:·,trail:·
-
-"set expandtab                           " Use spaces instead of tabs
 set smarttab
-
 set shiftwidth=4                        " Tab is 4 spaces
 set tabstop=4
 
+" Lists {{{2
+set list
+set listchars=tab:┊\ ,extends:›,precedes:‹,nbsp:·,trail:·
 set linebreak
 
-" Folds
-
-" Set fold method to indent
-set foldmethod=indent
-
-" Don't fold by default
+" Folds {{{2
 set nofoldenable
+set foldmethod=indent
+set foldlevel=0
 
-" From http://dhruvasagar.com/2013/03/28/vim-better-foldtext
-function! NeatFoldText()
-	let regex = '^\s*"\?\s*\|\s*"\?\s*{{' . '{\d*\s*'
-	let line = ' ' .
-				\ substitute(getline(v:foldstart), regex, '', 'g') . ' '
-	let lines_count = v:foldend - v:foldstart + 1
-	let lines_count_text = '| ' .
-				\ printf("%10s", lines_count . ' lines') . ' |'
-	let fill = matchstr(&fillchars, 'fold:\zs.')
-	let foldtextstart = strpart('+' . repeat(fill, v:foldlevel*2) .
-				\ line, 0, (winwidth(0)*2)/3)
-	let foldtextend = lines_count_text . repeat(fill, 8)
-	let foldtextlength = strlen(substitute(foldtextstart . foldtextend,
-				\ '.', 'x', 'g')) + &foldcolumn
-	return foldtextstart . repeat(fill, winwidth(0)-foldtextlength) .
-				\ foldtextend
-endfunction
+
 set foldtext=NeatFoldText()
 
 
-"==============================================================================
-" ENVIRONMENT-SPECIFIC SETTINGS "
-"==============================================================================
-
+" Environment specific {{{1
 if has('gui_running')
 	set guioptions+=e
 	set guitablabel=%M\ %t
 	set gfn=Source\ Code\ Pro\ Medium\ 10
-	set guioptions-=T                   " Remove the toolbar
+	set guioptions-=T
 	set guioptions-=r
 	set guioptions-=l
 	set guioptions-=R
@@ -136,7 +101,6 @@ if has('gui_running')
 	set guioptions+=m "Remove the menubar
 	colorscheme molok
 else
-	"set term=builtin_ansi              " Make arrow and other keys work
 	if &t_Co >= 256
 		colorscheme molok
 	elseif &t_Co < 256
@@ -144,44 +108,36 @@ else
 	endif
 endif
 
-""""""""""""""""""
-"  autocommands  "
+
+"  autocommands {{{1
 "
 "  This section assumes the version of vim running has autocmd.
 "  A big outer if has('autocmd') check, could come in handy for systems that dont
 "  support the feature..
-""""""""""""""""""
 
-augroup Misc
-
+augroup Misc " {{{2
 	autocmd!
 	autocmd VimEnter * echo "Welcome to this Session, Loknan... Init Sage Mode!"
 	autocmd VimLeave * echo "Sage Mode Deactivated!"
-
 augroup END
 
-
-augroup Filetypes
-
+augroup Filetypes " {{{2
 	autocmd!
 	autocmd FileType help set nolist | nnoremap q :q<cr>
 	autocmd FileType gitcommit set nolist
 	autocmd FileType gitconfig set nolist
-
+	autocmd FileType vim set foldenable | set foldmethod=marker
 augroup END
 
-augroup Markdown
-
+augroup Markdown " {{{2
 	"autocmd!
 	autocmd BufNewFile,BufRead *.{txt,text} set filetype=markdown
-
 augroup END
 
 
-"""""""""""""""
-"  Functions  "
-"""""""""""""""
-function! RenameFile()
+"  Functions {{{1
+"
+function! RenameFile() " {{{2
 	let old_name = expand('%')
 	let new_name = input('New File Name: ', expand('%'), 'file')
 	if new_name != '' && new_name != old_name
@@ -191,81 +147,81 @@ function! RenameFile()
 	endif
 endfunction
 
+function! NeatFoldText() "{{{2
+	let line = ' ' . substitute(getline(v:foldstart), '^\s*"\?\s*\|\s*"\?\s*{{' . '{\d*\s*', '', 'g') . ' '
+	let lines_count = v:foldend - v:foldstart + 1
+	let lines_count_text = '| ' . printf("%10s", lines_count . ' lines') . ' |'
+	let foldchar = matchstr(&fillchars, 'fold:\zs.')
+	let foldtextstart = strpart('+' . repeat(foldchar, v:foldlevel*2) . line, 0, (winwidth(0)*2)/3)
+	let foldtextend = lines_count_text . repeat(foldchar, 8)
+	let foldtextlength = strlen(substitute(foldtextstart . foldtextend, '.', 'x', 'g')) + &foldcolumn
+	return foldtextstart . repeat(foldchar, winwidth(0)-foldtextlength) . foldtextend
+endfunction
 
-""""""""""""""
-"  commands  "
-""""""""""""""
+
+"  commands {{{1
 command! Notes :edit ~/notes
 
 
-"""""""""""""""""""
-"  Abbreviations  "
-"""""""""""""""""""
+"  Abbreviations {{{1
 iabbrev _d <c-r>=strftime('%H:%M -')<cr>
 
 
-"==============================================================================
-" => Custom Mappings
-"==============================================================================
+" Mappings {{{1
 
 let mapleader = ","
 let g:mapleader = ","
 
-" Move between splits more easily
+
+" Move between splits more easily {{{2
 noremap <C-J>     <C-W>j
 noremap <C-K>     <C-W>k
 noremap <C-H>     <C-W>h
 noremap <C-L>     <C-W>l
 
-" Remap for text wrapping
+" Remap for text wrapping {{{2
 nmap j gj
 nmap k gk
 
-" Fly between buffers
+" Fly between buffers {{{2
 nnoremap <leader>l :ls<CR>:b<space>
 
-" Close a buffer without closing the whole window.
+" Close buffer {{{2
 nnoremap <silent> <leader>d :Bdelete<cr>
 
-" Remap <C-Space> for autocomplete
+" Remap <C-Space> for autocomplete {{{2
 imap <C-Space> <C-x><C-o>
 
-" Rename the current file
+" Rename the current file {{{2
 noremap <leader>n :call RenameFile()<cr>
 
 
-"==============================================================================
-" Other configurations
-"==============================================================================
+" Other configurations {{{1
 
+" Omnicomplete {{{2
 set omnifunc=syntaxcomplete#Complete
 
-" Always show the statusline
+" Always show the statusline {{{2
 set laststatus=2
 
 
-" Vim powerline
+" Powerline {{{2
 set rtp+=/home/nanyaks/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 
 
-"==============================================================================
-" => Plugins
-"==============================================================================
+" Plugins {{{2
 
-let g:snippets_dir = '~/.vim/snippets/'
+"let g:snippets_dir = '~/.vim/snippets/'
 
 
-""""""""""""""""""""""""""
-"  Pathogen configuaton  "
-""""""""""""""""""""""""""
+"  Pathogen configuaton  {{{3
 
 call pathogen#infect()
 call pathogen#helptags()
 
 
-""""""""""""""
-"  Fugitive  "
-""""""""""""""
+"  Fugitive  {{{3
+
 " gd: git diff (as text)
 nnoremap <leader>gd :Gvsplit! diff<cr>
 " gv: visual diff
@@ -298,9 +254,7 @@ nnoremap <leader>gp :Gcommit --patch<cr>
 nnoremap <leader>gs :Gstatus<cr>
 
 
-"""""""""""""""""""""""""
-"  CtrlP configuration  "
-"""""""""""""""""""""""""
+"  CtrlP configuration  {{{3
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
@@ -313,49 +267,43 @@ let g:ctrlp_mruf_exclude = '/tmp/.*\|/temp/.*'
 let g:ctrlp_mruf_relative = 1           " Remember mru from CWD
 
 
-" Mappings
+" Mappings {{{4
 nnoremap <silent> <leader>f :CtrlPBuffer<cr>
 
 
-"""""""""""""""""""""""""""""
-"  Ultisnips "
-"""""""""""""""""""""""""""""
+"  Ultisnips  {{{3
 
 let g:UltiSnipsSnippetsDir = '~/.vim/bundle/ultisnips/UltiSnips'
 let g:snips_author = 'Nanyak Loknan S. <nanyaks@gmail.com>'
 
-"  triggers  "
-""""""""""""""""""""""""
+"  Triggers  {{{4
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsListSnippets = "<c-tab>"
 let g:UltiSnipsJumpForwardTrigger = "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
 let g:neocomplete#enable_fuzzy_completion = 0
 
-"""""""""""""""""
-"  neocomplete  "
-"""""""""""""""""
+
+"  Neocomplete  {{{3
 
 let g:neocomplete#enable_at_startup = 0
 let g:neocomplete#max_list = 50 " default
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#min_keyword_length = 3
 
-" Enable omni completion
+" Enable omni completion  {{{4
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-" simple mapping to start and stop neocomplete
+" Simple mapping to start and stop neocomplete  {{{4
 nnoremap <leader>ne :NeoCompleteEnable <cr>
 nnoremap <leader>nd :NeoCompleteDisable <cr>
 
 
-""""""""""""""""""
-"  vim startify  "
-""""""""""""""""""
+"  Vim startify  {{{3
 let g:startify_bookmarks = [
 			\ '~/.vimrc',
 			\ '~/.zshrc',
@@ -374,18 +322,14 @@ let g:startify_custom_header = [
 			\ '',
 			\]
 
-"""""""""""""""""
-"  scratch.vim  "
-"""""""""""""""""
+"  scratch.vim  {{{3
 "g:scratch_disable = 0
 
 "g:scratch_height = 10
 "g:scratch_top = 1
 
 
-""""""""""""""""""""""
-"  php.vim settings  "
-""""""""""""""""""""""
+"  php.vim settings  {{{3
 let php_sql_query = 1
 let php_html_in_strings = 1
 "
