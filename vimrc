@@ -330,8 +330,11 @@ let g:startify_custom_header = [
 
 
 "  php.vim settings  {{{3
-let php_sql_query = 1
+"  let php_sql_query = 0
 let php_html_in_strings = 1
 "
 "
 " </nnyk_> .vimrc file
+"
+" NerdTree {{{3
+nnoremap <leader>nt :NERDTree <cr>
