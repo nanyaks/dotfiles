@@ -273,7 +273,7 @@ nnoremap <silent> <leader>f :CtrlPBuffer<cr>
 
 "  Ultisnips  {{{3
 
-let g:UltiSnipsSnippetsDir = '~/.vim/bundle/ultisnips/UltiSnips'
+let g:UltiSnipsSnippetsDir = '~/.vim/bundle/vim-snippets/UltiSnips'
 let g:snips_author = 'Nanyak Loknan S. <nanyaks@gmail.com>'
 
 "  Triggers  {{{4
