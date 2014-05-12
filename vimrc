@@ -92,7 +92,7 @@ set foldtext=NeatFoldText()
 if has('gui_running')
 	set guioptions+=e
 	set guitablabel=%M\ %t
-	set gfn=Source\ Code\ Pro\ Medium\ 10
+	set gfn=Source\ Code\ Pro\ for\ Powerline\ Medium\ 11
 	set guioptions-=T
 	set guioptions-=r
 	set guioptions-=l
@@ -206,13 +206,10 @@ set laststatus=2
 
 
 " Powerline {{{2
-set rtp+=/home/nanyaks/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
 
 
 " Plugins {{{2
-
-"let g:snippets_dir = '~/.vim/snippets/'
-
 
 "  Pathogen configuaton  {{{3
 
@@ -284,6 +281,7 @@ let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
 let g:neocomplete#enable_fuzzy_completion = 0
 
 
+
 "  Neocomplete  {{{3
 
 let g:neocomplete#enable_at_startup = 0
@@ -328,13 +326,13 @@ let g:startify_custom_header = [
 "g:scratch_height = 10
 "g:scratch_top = 1
 
-
 "  php.vim settings  {{{3
 "  let php_sql_query = 0
 let php_html_in_strings = 1
-"
-"
-" </nnyk_> .vimrc file
-"
+
 " NerdTree {{{3
 nnoremap <leader>nt :NERDTree <cr>
+
+" Tagbar {{{3
+nmap <F8> :TagbarToggle<cr>
+
