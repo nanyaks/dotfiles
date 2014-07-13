@@ -229,32 +229,46 @@ call pathogen#helptags()
 
 " gd: git diff (as text)
 nnoremap <leader>gd :Gvsplit! diff<cr>
+
 " gv: visual diff
 nnoremap <leader>gv :Gdiff<cr>
+
 " gV: (attempt to) close visual diff
 "nnoremap <leader>gV <C-w>h:q<cr><C-^>
+
 " ge: Prompt to edit file
 nnoremap <leader>ge :Gedit<Space>
+
 " gb: Blame
 nnoremap <leader>gb :Gblame<cr>
+
 " gm: Prompt to move
 nnoremap <leader>gm :Gmove<Space>
+
 " gm: Prompt to remove
 nnoremap <leader>gr :Gremove<Space>
+
 " gm: Prompt to grep
 nnoremap <leader>gg :Ggrep<Space>
+
 " gl: Show git log
 nnoremap <leader>gl :Glog<cr><cr>:cw<cr>
+
 " gr: (read) checkout --
 nnoremap <leader>gr :Gread<cr>
+
 " gx: prompt to eXecute git command
 nnoremap <leader>gx :Git<Space>
+
 " gc: git commit
 nnoremap <leader>gc :Gcommit<cr>
+
 " gC: git commit --amend
 nnoremap <leader>gC :Gcommit --amend<cr>
+
 " gp: git commit --patch
 nnoremap <leader>gp :Gcommit --patch<cr>
+
 " gs: git status
 nnoremap <leader>gs :Gstatus<cr>
 
