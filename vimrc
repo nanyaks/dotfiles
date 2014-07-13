@@ -170,11 +170,13 @@ command! Notes :edit ~/notes
 
 
 "  Abbreviations {{{1
-iabbrev _d <c-r>=strftime('%H:%M -')<cr>
+if exists("*strftime")
+	iabbrev _t <c-r>=strftime('%H:%M -')<cr>
+	iabbrev _dt <c-r>=strftime("%c")<cr>
+endif
 
 
 " Mappings {{{1
-
 let mapleader = ","
 let g:mapleader = ","
 
