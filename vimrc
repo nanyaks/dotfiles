@@ -134,6 +134,12 @@ augroup Markdown " {{{2
 	autocmd BufNewFile,BufRead *.{txt,text} set filetype=markdown
 augroup END
 
+augroup Python " {{{2
+	autocmd!
+	autocmd FileType python set textwidth=79 | set tabstop=4 | set shiftwidth=4 | set expandtab | set softtabstop=4 | set shiftround | set autoindent
+	autocmd BufWritePost *.py call Flake8()
+augroup END
+
 
 "  Functions {{{1
 "
