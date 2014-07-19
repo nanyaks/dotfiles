@@ -363,3 +363,8 @@ let g:mta_use_matchparen_group = 1
 let g:mta_filetypes = { 'html': 1, 'xhtml': 1, 'xml': 1, 'jinja': 1, 'php': 1 }
 let g:mta_use_matchparen_group = 1
 
+" Gundo {{{3
+nnoremap <f5> :GundoToggle<CR>
+let g:gundo_width = 60
+let g:gundo_preview_height = 40
+let g:gundo_right = 1
