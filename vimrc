@@ -93,10 +93,19 @@ set foldtext=NeatFoldText()
 
 
 " Environment specific {{{1
+let os=substitute(system('uname'), '\n', '', '')
+if os == 'Darwin'
+	" Powerline
+	set rtp+=/Users/mac/Library/Python/2.7/lib/python/site-packages/powerline/bindings/vim/
+elseif os  == 'Linux'
+	" Powerline
+	set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
+endif
+
 if has('gui_running')
 	set guioptions+=e
 	set guitablabel=%M\ %t
-	set gfn=Source\ Code\ Pro\ for\ Powerline\ Medium\ 11
+	set gfn=Source\ Code\ Pro\ for\ Powerline\ Medium\ 10
 	set guioptions-=T
 	set guioptions-=r
 	set guioptions-=l
@@ -217,8 +226,6 @@ set omnifunc=syntaxcomplete#Complete
 set laststatus=2
 
 
-" Powerline {{{2
-set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
 
 
 " Plugins {{{2
