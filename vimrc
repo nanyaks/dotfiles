@@ -15,9 +15,6 @@ set showcmd
 set hidden
 set wrap
 
-set wildmenu
-set wildmode="list:full"
-
 set number
 set cursorline                          " Highlight the current cursor-line
 set so=7                                " Scroll Offset option - Number of context lines
@@ -25,8 +22,15 @@ set ruler
 set cmdheight=2
 set backspace=eol,start,indent          " Configure backspace
 
-set wildignore=*.swp,*.bak,*.pyc,*.class,*/.git/**/*,*.o,*/.svn/**/*,*/.hg/**/*
-set wildignorecase
+" Wildmenu
+if has('wildmenu')
+	set wildmenu
+	set wildmode="list:full"
+	set wildignore=*.swp,*.bak,*.pyc,*.class,*/.git/**/*,*.o,*/.svn/**/*,*/.hg/**/*
+	if exists('&wildignorecase')
+		set wildignorecase
+	endif
+endif
 
 set lazyredraw                          " Don't redraw while executing macros
 
