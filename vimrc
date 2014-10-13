@@ -6,7 +6,7 @@ syntax on
 
 " General Settings for the whole file {{{2
 set nocompatible
-set encoding=utf8
+set encoding=utf-8
 set history=1000
 set title
 
@@ -97,29 +97,49 @@ let os=substitute(system('uname'), '\n', '', '')
 if os == 'Darwin'
 	" Powerline
 	set rtp+=/Users/mac/Library/Python/2.7/lib/python/site-packages/powerline/bindings/vim/
+	" make yy,p etc copy to clipboard for now
+	set clipboard=unnamed
+	if has('gui_macvim')
+		set guioptions+=e
+		set guitablabel=%M\ %t
+		set guioptions-=T
+		set guioptions-=r
+		set guioptions-=l
+		set guioptions-=R
+		set guioptions-=L
+		set guioptions-=m "Remove the menubar
+		set guifont=Source\ Code\ Pro\ for\ Powerline:h12
+		colorscheme molok
+	else
+		if &t_Co >= 256
+			colorscheme molok
+		elseif &t_Co < 256
+			colorscheme default
+		endif
+	endif
 elseif os  == 'Linux'
 	" Powerline
 	set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
-endif
-
-if has('gui_running')
-	set guioptions+=e
-	set guitablabel=%M\ %t
-	set gfn=Source\ Code\ Pro\ for\ Powerline\ Medium\ 10
-	set guioptions-=T
-	set guioptions-=r
-	set guioptions-=l
-	set guioptions-=R
-	set guioptions-=L
-	set guioptions+=m "Remove the menubar
-	colorscheme molok
-else
-	if &t_Co >= 256
+	if has('gui_running')
+		set guioptions+=e
+		set guitablabel=%M\ %t
+		set gfn=Source\ Code\ Pro\ for\ Powerline\ Medium\ 10
+		set guioptions-=T
+		set guioptions-=r
+		set guioptions-=l
+		set guioptions-=R
+		set guioptions-=L
+		set guioptions+=m "Remove the menubar
 		colorscheme molok
-	elseif &t_Co < 256
-		colorscheme default
+	else
+		if &t_Co >= 256
+			colorscheme molok
+		elseif &t_Co < 256
+			colorscheme default
+		endif
 	endif
 endif
+
 
 
 "  autocommands {{{1
@@ -177,6 +197,17 @@ function! NeatFoldText() "{{{2
 	return foldtextstart . repeat(foldchar, winwidth(0)-foldtextlength) . foldtextend
 endfunction
 
+function! LessToCss()
+	" Auto update less files to css @nanyaks implementation Sat Aug 30 12:44:59 2014
+	let current_file = shellescape(expand('%:p'))
+	let filename = shellescape(expand('%:r'))
+	let cssfile = shellescape(expand('%:p:r:s?less?css?')) " the file to be written to
+	if (executable('lessc'))
+		let command = "silent !lessc " . current_file . " " . cssfile . ".css"
+		execute command
+	endif
+endfunction
+autocmd BufWritePost,FileWritePost *.less call LessToCss()
 
 "  commands {{{1
 command! Notes :edit ~/notes
