@@ -173,6 +173,11 @@ augroup Python " {{{2
 	autocmd BufWritePost *.py call Flake8()
 augroup END
 
+augroup Ejs " {{{2
+	autocmd!
+	autocmd BufNewFile,BufRead *.ejs set filetype=html
+augroup END
+
 
 "  Functions {{{1
 "
