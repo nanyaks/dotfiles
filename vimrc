@@ -22,14 +22,18 @@ set ruler
 set cmdheight=2
 set backspace=eol,start,indent          " Configure backspace
 
+set expandtab
+set tabstop=4
+set shiftwidth=4
+
 " Wildmenu
 if has('wildmenu')
-	set wildmenu
-	set wildmode="list:full"
-	set wildignore=*.swp,*.bak,*.pyc,*.class,*/.git/**/*,*.o,*/.svn/**/*,*/.hg/**/*
-	if exists('&wildignorecase')
-		set wildignorecase
-	endif
+    set wildmenu
+    set wildmode="list:full"
+    set wildignore=*.swp,*.bak,*.pyc,*.class,*/.git/**/*,*.o,*/.svn/**/*,*/.hg/**/*
+    if exists('&wildignorecase')
+        set wildignorecase
+    endif
 endif
 
 set lazyredraw                          " Don't redraw while executing macros
@@ -41,7 +45,7 @@ set mat=2                               " How many tenths of a second to blink
 " Bells and Whistles {{{2
 set noerrorbells visualbell t_vb=
 if has('autocmd')
-	autocmd GUIEnter * set visualbell t_vb=
+    autocmd GUIEnter * set visualbell t_vb=
 endif
 
 " Splits {{{2
@@ -95,49 +99,49 @@ set foldtext=NeatFoldText()
 " Environment specific {{{1
 let os=substitute(system('uname'), '\n', '', '')
 if os == 'Darwin'
-	" Powerline
-	set rtp+=/Users/mac/Library/Python/2.7/lib/python/site-packages/powerline/bindings/vim/
-	" make yy,p etc copy to clipboard for now
-	set clipboard=unnamed
-	if has('gui_macvim')
-		set guioptions+=e
-		set guitablabel=%M\ %t
-		set guioptions-=T
-		set guioptions-=r
-		set guioptions-=l
-		set guioptions-=R
-		set guioptions-=L
-		set guioptions-=m "Remove the menubar
-		set guifont=Source\ Code\ Pro\ for\ Powerline:h12
-		colorscheme molok
-	else
-		if &t_Co >= 256
-			colorscheme molok
-		elseif &t_Co < 256
-			colorscheme default
-		endif
-	endif
+    " Powerline
+    set rtp+=/Users/mac/Library/Python/2.7/lib/python/site-packages/powerline/bindings/vim/
+    " make yy,p etc copy to clipboard for now
+    set clipboard=unnamed
+    if has('gui_macvim')
+        set guioptions+=e
+        set guitablabel=%M\ %t
+        set guioptions-=T
+        set guioptions-=r
+        set guioptions-=l
+        set guioptions-=R
+        set guioptions-=L
+        set guioptions-=m "Remove the menubar
+        set guifont=Source\ Code\ Pro\ for\ Powerline:h12
+        colorscheme molok
+    else
+        if &t_Co >= 256
+            colorscheme molok
+        elseif &t_Co < 256
+            colorscheme default
+        endif
+    endif
 elseif os  == 'Linux'
-	" Powerline
-	set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
-	if has('gui_running')
-		set guioptions+=e
-		set guitablabel=%M\ %t
-		set gfn=Source\ Code\ Pro\ for\ Powerline\ Medium\ 10
-		set guioptions-=T
-		set guioptions-=r
-		set guioptions-=l
-		set guioptions-=R
-		set guioptions-=L
-		set guioptions+=m "Remove the menubar
-		colorscheme molok
-	else
-		if &t_Co >= 256
-			colorscheme molok
-		elseif &t_Co < 256
-			colorscheme default
-		endif
-	endif
+    " Powerline
+    set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
+    if has('gui_running')
+        set guioptions+=e
+        set guitablabel=%M\ %t
+        set gfn=Source\ Code\ Pro\ for\ Powerline\ Medium\ 10
+        set guioptions-=T
+        set guioptions-=r
+        set guioptions-=l
+        set guioptions-=R
+        set guioptions-=L
+        set guioptions+=m "Remove the menubar
+        colorscheme molok
+    else
+        if &t_Co >= 256
+            colorscheme molok
+        elseif &t_Co < 256
+            colorscheme default
+        endif
+    endif
 endif
 
 
@@ -149,68 +153,68 @@ endif
 "  support the feature..
 
 augroup Misc " {{{2
-	autocmd!
-	autocmd VimEnter * echo "Welcome to this Session, Loknan... Init Sage Mode!"
-	autocmd VimLeave * echo "Sage Mode Deactivated!"
+    autocmd!
+    autocmd VimEnter * echo "Welcome to this Session, Loknan... Init Sage Mode!"
+    autocmd VimLeave * echo "Sage Mode Deactivated!"
 augroup END
 
 augroup Filetypes " {{{2
-	autocmd!
-	autocmd FileType help set nolist | nnoremap q :q<cr>
-	autocmd FileType gitcommit set nolist
-	autocmd FileType gitconfig set nolist
-	autocmd FileType vim set foldenable | set foldmethod=marker
+    autocmd!
+    autocmd FileType help set nolist | nnoremap q :q<cr>
+    autocmd FileType gitcommit set nolist
+    autocmd FileType gitconfig set nolist
+    autocmd FileType vim set foldenable | set foldmethod=marker
 augroup END
 
 augroup Markdown " {{{2
-	"autocmd!
-	autocmd BufNewFile,BufRead *.{txt,text} set filetype=markdown
+    "autocmd!
+    autocmd BufNewFile,BufRead *.{txt,text} set filetype=markdown
 augroup END
 
 augroup Python " {{{2
-	autocmd!
-	autocmd FileType python set textwidth=79 | set tabstop=4 | set shiftwidth=4 | set expandtab | set softtabstop=4 | set shiftround | set autoindent
-	autocmd BufWritePost *.py call Flake8()
+    autocmd!
+    autocmd FileType python set textwidth=79 | set tabstop=4 | set shiftwidth=4 | set expandtab | set softtabstop=4 | set shiftround | set autoindent
+    autocmd BufWritePost *.py call Flake8()
 augroup END
 
 augroup Ejs " {{{2
-	autocmd!
-	autocmd BufNewFile,BufRead *.ejs set filetype=html
+    autocmd!
+    autocmd BufNewFile,BufRead *.ejs set filetype=html
 augroup END
 
 
 "  Functions {{{1
 "
 function! RenameFile() " {{{2
-	let old_name = expand('%')
-	let new_name = input('New File Name: ', expand('%'), 'file')
-	if new_name != '' && new_name != old_name
-		exec ':saveas ' . new_name
-		exec ':silent !rm ' . old_name
-		redraw!
-	endif
+    let old_name = expand('%')
+    let new_name = input('New File Name: ', expand('%'), 'file')
+    if new_name != '' && new_name != old_name
+        exec ':saveas ' . new_name
+        exec ':silent !rm ' . old_name
+        redraw!
+    endif
 endfunction
 
 function! NeatFoldText() "{{{2
-	let line = ' ' . substitute(getline(v:foldstart), '^\s*"\?\s*\|\s*"\?\s*{{' . '{\d*\s*', '', 'g') . ' '
-	let lines_count = v:foldend - v:foldstart + 1
-	let lines_count_text = '| ' . printf("%10s", lines_count . ' lines') . ' |'
-	let foldchar = matchstr(&fillchars, 'fold:\zs.')
-	let foldtextstart = strpart('+' . repeat(foldchar, v:foldlevel*2) . line, 0, (winwidth(0)*2)/3)
-	let foldtextend = lines_count_text . repeat(foldchar, 8)
-	let foldtextlength = strlen(substitute(foldtextstart . foldtextend, '.', 'x', 'g')) + &foldcolumn
-	return foldtextstart . repeat(foldchar, winwidth(0)-foldtextlength) . foldtextend
+    let line = ' ' . substitute(getline(v:foldstart), '^\s*"\?\s*\|\s*"\?\s*{{' . '{\d*\s*', '', 'g') . ' '
+    let lines_count = v:foldend - v:foldstart + 1
+    let lines_count_text = '| ' . printf("%10s", lines_count . ' lines') . ' |'
+    let foldchar = matchstr(&fillchars, 'fold:\zs.')
+    let foldtextstart = strpart('+' . repeat(foldchar, v:foldlevel*2) . line, 0, (winwidth(0)*2)/3)
+    let foldtextend = lines_count_text . repeat(foldchar, 8)
+    let foldtextlength = strlen(substitute(foldtextstart . foldtextend, '.', 'x', 'g')) + &foldcolumn
+    return foldtextstart . repeat(foldchar, winwidth(0)-foldtextlength) . foldtextend
 endfunction
 
 function! LessToCss()
-	" Auto update less files to css @nanyaks implementation Sat Aug 30 12:44:59 2014
-	let current_file = shellescape(expand('%:p'))
-	let filename = shellescape(expand('%:r'))
-	let cssfile = shellescape(expand('%:p:r:s?less?css?')) " the file to be written to
-	if (executable('lessc'))
-		let command = "silent !lessc " . current_file . " " . cssfile . ".css"
-		execute command
-	endif
+    " Auto update less files to css @nanyaks implementation Sat Aug 30 12:44:59 2014
+    let current_file = shellescape(expand('%:p'))
+    let filename = shellescape(expand('%:r'))
+    let cssfile = shellescape(expand('%:p:r:s?less?css?')) " the file to be written to
+    if (executable('lessc'))
+        let command = "silent !lessc " . current_file . " " . cssfile . ".css"
+        execute command
+    endif
 endfunction
 autocmd BufWritePost,FileWritePost *.less call LessToCss()
 
@@ -220,8 +224,8 @@ command! Notes :edit ~/notes
 
 "  Abbreviations {{{1
 if exists("*strftime")
-	iabbrev _t <c-r>=strftime('%H:%M -')<cr>
-	iabbrev _dt <c-r>=strftime("%c")<cr>
+    iabbrev _t <c-r>=strftime('%H:%M -')<cr>
+    iabbrev _dt <c-r>=strftime("%c")<cr>
 endif
 
 
@@ -372,22 +376,22 @@ nnoremap <leader>nd :NeoCompleteDisable <cr>
 
 "  Vim startify  {{{3
 let g:startify_bookmarks = [
-			\ '~/.vimrc',
-			\ '~/.zshrc',
-			\]
+            \ '~/.vimrc',
+            \ '~/.zshrc',
+            \]
 let g:startify_skiplist = ['COMMIT_EDITMSG']
 let g:startify_files_number = 14
 let g:startify_custom_header = [
-			\ '',
-			\ '------------M-----M---------M-----M-------------',
-			\ '------------M-----M--MMMMM--M-----M-------------',
-			\ '-------------M---M-----M----MM---MM-------------',
-			\ '--------------M-M------M----M-M-M-M-------------',
-			\ '---------------M-------M----M--M--M-------------',
-			\ '---------------------MMMMM----------------------',
-			\ '',
-			\ '',
-			\]
+            \ '',
+            \ '------------M-----M---------M-----M-------------',
+            \ '------------M-----M--MMMMM--M-----M-------------',
+            \ '-------------M---M-----M----MM---MM-------------',
+            \ '--------------M-M------M----M-M-M-M-------------',
+            \ '---------------M-------M----M--M--M-------------',
+            \ '---------------------MMMMM----------------------',
+            \ '',
+            \ '',
+            \]
 
 "  scratch.vim  {{{3
 "g:scratch_disable = 0
