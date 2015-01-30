@@ -113,10 +113,10 @@ if os == 'Darwin'
         set guioptions-=L
         set guioptions-=m "Remove the menubar
         set guifont=Source\ Code\ Pro\ for\ Powerline:h12
-        colorscheme molok
+        colorscheme molokai
     else
         if &t_Co >= 256
-            colorscheme molok
+            colorscheme molokai
         elseif &t_Co < 256
             colorscheme default
         endif
@@ -134,10 +134,10 @@ elseif os  == 'Linux'
         set guioptions-=R
         set guioptions-=L
         set guioptions+=m "Remove the menubar
-        colorscheme molok
+        colorscheme molokai
     else
         if &t_Co >= 256
-            colorscheme molok
+            colorscheme molokai
         elseif &t_Co < 256
             colorscheme default
         endif
