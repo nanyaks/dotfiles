@@ -405,6 +405,7 @@ let php_html_in_strings = 1
 
 " NerdTree {{{3
 nnoremap <leader>nt :NERDTree <cr>
+let NERDTreeIgnore = ['\.pyc$', '\.db$', '\.xlsx$']
 
 " Tagbar {{{3
 nmap <F8> :TagbarToggle<cr>
@@ -419,3 +420,18 @@ nnoremap <f5> :GundoToggle<CR>
 let g:gundo_width = 60
 let g:gundo_preview_height = 40
 let g:gundo_right = 1
+
+" Custom mappings for moving text around
+" nnoremap <A-j> :m .+1<CR>==
+" nnoremap <A-k> :m .-2<CR>==
+" inoremap <A-j> <Esc>:m .+1<CR>==gi
+" inoremap <A-k> <Esc>:m .-2<CR>==gi
+" vnoremap <A-j> :m '>+1<CR>gv=gv
+" vnoremap <A-k> :m '<-2<CR>gv=gv
+
+nnoremap ∆ :m .+1<CR>==
+nnoremap ˚ :m .-2<CR>==
+inoremap ∆ <Esc>:m .+1<CR>==gi
+inoremap ˚ <Esc>:m .-2<CR>==gi
+vnoremap ∆ :m '>+1<CR>gv=gv
+vnoremap ˚ :m '<-2<CR>gv=gv
