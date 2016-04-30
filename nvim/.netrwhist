@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/home/nanyaks/vcs/git/js/todomvc/architecture-examples/backbone/js/views'
+let g:netrw_dirhist_2='/var/www/mage/vmagento/app/design/frontend/loknizzle/default/layout'
+let g:netrw_dirhist_3='/var/www/work/quicklotto/app/Controller/Component'
+let g:netrw_dirhist_4='/var/www/work/quicklotto/app/Model/Datasource'
