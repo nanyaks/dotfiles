@@ -67,9 +67,9 @@ set ffs=unix,dos,mac                    " Use Unix as the standard file type
 
 " Files, backups and undo {{{2
 set backup
-set backupdir=~/.vim/backup
+set backupdir=~/.nvim/backup
 set swapfile
-set directory=~/.vim/backup
+set directory=~/.nvim/backup
 
 
 " Session Saving {{{2
@@ -99,8 +99,8 @@ set foldtext=NeatFoldText()
 " Environment specific {{{1
 let os=substitute(system('uname'), '\n', '', '')
 if os == 'Darwin'
-    " Powerline
-    set rtp+=/Users/mac/Library/Python/2.7/lib/python/site-packages/powerline/bindings/vim/
+    " Airline for nvim
+    let g:airline_powerline_fonts = 1
     " make yy,p etc copy to clipboard for now
     set clipboard=unnamed
     if has('gui_macvim')
@@ -116,7 +116,8 @@ if os == 'Darwin'
         colorscheme molokai
     else
         if &t_Co >= 256
-            colorscheme molokai
+            set background=dark
+            colorscheme molok
         elseif &t_Co < 256
             colorscheme default
         endif
@@ -326,7 +327,7 @@ nnoremap <leader>gs :Gstatus<cr>
 
 "  CtrlP configuration  {{{3
 
-set runtimepath^=~/.vim/bundle/ctrlp.vim
+set runtimepath^=~/.nvim/bundle/ctrlp.vim
 
 let g:ctrlp_switch_buffer = 'Et'
 let g:ctrlp_open_multiple_files = 'i'   " Select multiple <c-z>, <c-o> open.
@@ -343,7 +344,8 @@ nnoremap <silent> <leader>f :CtrlPBuffer<cr>
 
 "  Ultisnips  {{{3
 
-let g:UltiSnipsSnippetsDir = '~/.vim/bundle/vim-snippets/UltiSnips'
+let g:UltiSnipsSnippetsDirectories = ["UltiSnips"]
+" let g:UltiSnipsSnippetsDir = '~/.vim/nanyaks-snippets/UltiSnips'
 let g:snips_author = 'Nanyak Loknan S. <nanyaks@gmail.com>'
 
 "  Triggers  {{{4
@@ -377,6 +379,7 @@ nnoremap <leader>nd :NeoCompleteDisable <cr>
 "  Vim startify  {{{3
 let g:startify_bookmarks = [
             \ '~/.vimrc',
+            \ '~/.nvimrc',
             \ '~/.zshrc',
             \]
 let g:startify_skiplist = ['COMMIT_EDITMSG']
@@ -405,7 +408,7 @@ let php_html_in_strings = 1
 
 " NerdTree {{{3
 nnoremap <leader>nt :NERDTree <cr>
-let NERDTreeIgnore = ['\.pyc$', '\.db$', '\.xlsx$']
+let NERDTreeIgnore = ['\.pyc$', '\.db$', '\.xlsx$', '\.log$']
 
 " Tagbar {{{3
 nmap <F8> :TagbarToggle<cr>
