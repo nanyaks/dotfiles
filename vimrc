@@ -116,7 +116,8 @@ if os == 'Darwin'
         colorscheme molokai
     else
         if &t_Co >= 256
-            colorscheme molokai
+            set background=dark
+            colorscheme molok
         elseif &t_Co < 256
             colorscheme default
         endif
@@ -343,7 +344,8 @@ nnoremap <silent> <leader>f :CtrlPBuffer<cr>
 
 "  Ultisnips  {{{3
 
-let g:UltiSnipsSnippetsDir = '~/.vim/bundle/vim-snippets/UltiSnips'
+let g:UltiSnipsSnippetsDirectories = ["UltiSnips"]
+" let g:UltiSnipsSnippetsDir = '~/.vim/nanyaks-snippets/UltiSnips'
 let g:snips_author = 'Nanyak Loknan S. <nanyaks@gmail.com>'
 
 "  Triggers  {{{4
@@ -405,7 +407,7 @@ let php_html_in_strings = 1
 
 " NerdTree {{{3
 nnoremap <leader>nt :NERDTree <cr>
-let NERDTreeIgnore = ['\.pyc$', '\.db$', '\.xlsx$']
+let NERDTreeIgnore = ['\.pyc$', '\.db$', '\.xlsx$', '\.log$']
 
 " Tagbar {{{3
 nmap <F8> :TagbarToggle<cr>
