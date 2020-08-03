@@ -15,7 +15,7 @@ set showcmd
 set hidden
 set wrap
 
-set number
+set nonumber
 set cursorline                          " Highlight the current cursor-line
 set so=7                                " Scroll Offset option - Number of context lines
 set ruler
@@ -100,7 +100,7 @@ set foldtext=NeatFoldText()
 let os=substitute(system('uname'), '\n', '', '')
 if os == 'Darwin'
     " Powerline
-    set rtp+=/Users/mac/Library/Python/2.7/lib/python/site-packages/powerline/bindings/vim/
+    set rtp+=/Users/nanyaks/Library/Python/2.7/lib/python/site-packages/powerline/bindings/vim/
     " make yy,p etc copy to clipboard for now
     set clipboard=unnamed
     if has('gui_macvim')
@@ -437,3 +437,13 @@ inoremap ∆ <Esc>:m .+1<CR>==gi
 inoremap ˚ <Esc>:m .-2<CR>==gi
 vnoremap ∆ :m '>+1<CR>gv=gv
 vnoremap ˚ :m '<-2<CR>gv=gv
+
+" Syntastic {{{3
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
