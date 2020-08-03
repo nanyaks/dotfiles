@@ -5,7 +5,6 @@ filetype plugin indent on
 syntax on
 
 " General Settings for the whole file {{{2
-set nocompatible
 set encoding=utf-8
 set history=1000
 set title
@@ -15,7 +14,7 @@ set showcmd
 set hidden
 set wrap
 
-set number
+set nonumber
 set cursorline                          " Highlight the current cursor-line
 set so=7                                " Scroll Offset option - Number of context lines
 set ruler
@@ -88,7 +87,7 @@ set listchars=tab:┊\ ,extends:›,precedes:‹,nbsp:·,trail:·
 set linebreak
 
 " Folds {{{2
-set nofoldenable
+" set nofoldenable
 set foldmethod=indent
 set foldlevel=0
 
@@ -406,9 +405,6 @@ let g:startify_custom_header = [
 "  let php_sql_query = 0
 let php_html_in_strings = 1
 
-" NerdTree {{{3
-nnoremap <leader>nt :NERDTree <cr>
-let NERDTreeIgnore = ['\.pyc$', '\.db$', '\.xlsx$', '\.log$']
 
 " Tagbar {{{3
 nmap <F8> :TagbarToggle<cr>
