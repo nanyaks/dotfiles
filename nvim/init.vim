@@ -1,8 +1,9 @@
 " Core Settings {{{1
 
 " Filetype {{{2
-filetype plugin indent on
-syntax on
+" filetype plugin indent on
+" syntax on
+syntax enable
 
 " General Settings for the whole file {{{2
 set encoding=utf-8
@@ -117,7 +118,7 @@ if os == 'Darwin'
     else
         if &t_Co >= 256
             set background=dark
-            colorscheme molok
+            color molok
         elseif &t_Co < 256
             colorscheme default
         endif
@@ -270,11 +271,85 @@ set laststatus=2
 
 
 " Plugins {{{2
+"
+" Specify a directory for plugins
+" - For Neovim: stdpath('data') . '/plugged'
+" - Avoid using standard Vim directory names like 'plugin'
+
+call plug#begin('~/.nvim/plugs')
+
+" We'll add and configure the plugins as required in the next few lines
+" Most plugins would do okay with just the initialization in this section and
+" configuration to follow
+"
+" Startify
+Plug 'mhinz/vim-startify'
+
+Plug 'iCyMind/NeoSolarized'
+" Make sure you use single quotes
+
+" Airline
+Plug 'vim-airline/vim-airline'
+
+" Surround
+Plug 'tpope/vim-surround'
+
+" Repeat
+Plug 'tpope/vim-repeat'
+
+" Fugitive
+Plug 'tpope/vim-fugitive'
+
+" Git gutter
+Plug 'airblade/vim-gitgutter'
+
+" Deoplete
+if has('nvim')
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
+
+" Language extensions
+"
+" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+" Plug 'junegunn/vim-easy-align'
+
+" " Any valid git URL is allowed
+" Plug 'https://github.com/junegunn/vim-github-dashboard.git'
+
+" " Multiple Plug commands can be written in a single line using | separators
+" Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+
+" " On-demand loading
+" Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+" Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+
+" " Using a non-master branch
+" Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+
+" " Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
+" Plug 'fatih/vim-go', { 'tag': '*' }
+
+" " Plugin options
+" Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
+
+" " Plugin outside ~/.vim/plugged with post-update hook
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
+" " Unmanaged plugin (manually installed and updated)
+" Plug '~/my-prototype-plugin'
+
+" Initialize plugin system
+call plug#end()
 
 "  Pathogen configuaton  {{{3
 
-call pathogen#infect()
-call pathogen#helptags()
+" call pathogen#infect()
+" call pathogen#helptags()
 
 
 "  Fugitive  {{{3
@@ -359,10 +434,10 @@ let g:neocomplete#enable_fuzzy_completion = 0
 
 "  Neocomplete  {{{3
 
-let g:neocomplete#enable_at_startup = 0
-let g:neocomplete#max_list = 50 " default
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#min_keyword_length = 3
+" let g:neocomplete#enable_at_startup = 0
+" let g:neocomplete#max_list = 50 " default
+" let g:neocomplete#enable_smart_case = 1
+" let g:neocomplete#min_keyword_length = 3
 
 " Enable omni completion  {{{4
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -372,8 +447,8 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " Simple mapping to start and stop neocomplete  {{{4
-nnoremap <leader>ne :NeoCompleteEnable <cr>
-nnoremap <leader>nd :NeoCompleteDisable <cr>
+" nnoremap <leader>ne :NeoCompleteEnable <cr>
+" nnoremap <leader>nd :NeoCompleteDisable <cr>
 
 
 "  Vim startify  {{{3
