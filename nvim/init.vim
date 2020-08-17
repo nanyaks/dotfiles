@@ -355,11 +355,6 @@ let g:deoplete#enable_at_startup = 1
 " Initialize plugin system
 call plug#end()
 
-"  Pathogen configuaton  {{{3
-
-" call pathogen#infect()
-" call pathogen#helptags()
-
 
 "  Fugitive  {{{3
 
