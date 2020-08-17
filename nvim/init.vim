@@ -99,9 +99,18 @@ set foldtext=NeatFoldText()
 
 " Environment specific {{{1
 let os=substitute(system('uname'), '\n', '', '')
+
+" Now set the environment specific configurations
 if os == 'Darwin'
+
     " Airline for nvim
     let g:airline_powerline_fonts = 1
+
+    " Python provider configuration
+    let g:python3_host_prog = '/usr/local/bin/python3'
+
+    let g:python_host_prog = '/usr/bin/python'
+
     " make yy,p etc copy to clipboard for now
     set clipboard=unnamed
     if has('gui_macvim')
