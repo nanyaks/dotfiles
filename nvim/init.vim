@@ -132,6 +132,8 @@ if os == 'Darwin'
             colorscheme default
         endif
     endif
+
+" Configure Linux
 elseif os  == 'Linux'
     " Powerline
     set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
@@ -156,7 +158,6 @@ elseif os  == 'Linux'
 endif
 
 
-
 "  autocommands {{{1
 "
 "  This section assumes the version of vim running has autocmd.
@@ -177,17 +178,22 @@ augroup Filetypes " {{{2
     autocmd FileType vim set foldenable | set foldmethod=marker
 augroup END
 
+" Configure markdown
 augroup Markdown " {{{2
     "autocmd!
     autocmd BufNewFile,BufRead *.{txt,text} set filetype=markdown
 augroup END
 
-" augroup Python " {{{2
-"     autocmd!
-"     autocmd FileType python set textwidth=79 | set tabstop=4 | set shiftwidth=4 | set expandtab | set softtabstop=4 | set shiftround | set autoindent
-"     autocmd BufWritePost *.py call Flake8()
-" augroup END
 
+" Configure Python
+augroup Python " {{{2
+    autocmd!
+    autocmd FileType python set textwidth=79 | set tabstop=4 | set shiftwidth=4 | set expandtab | set softtabstop=4 | set shiftround | set autoindent
+    " autocmd BufWritePost *.py call Flake8()
+augroup END
+
+
+" Configure EJS
 augroup Ejs " {{{2
     autocmd!
     autocmd BufNewFile,BufRead *.ejs set filetype=html
@@ -205,6 +211,7 @@ function! RenameFile() " {{{2
         redraw!
     endif
 endfunction
+
 
 function! NeatFoldText() "{{{2
     let line = ' ' . substitute(getline(v:foldstart), '^\s*"\?\s*\|\s*"\?\s*{{' . '{\d*\s*', '', 'g') . ' '
@@ -230,7 +237,7 @@ endfunction
 autocmd BufWritePost,FileWritePost *.less call LessToCss()
 
 "  commands {{{1
-command! Notes :edit ~/notes
+" command! Notes :edit ~/notes
 
 
 "  Abbreviations {{{1
@@ -309,6 +316,10 @@ Plug 'tpope/vim-repeat'
 " Fugitive
 Plug 'tpope/vim-fugitive'
 
+" Commentary
+Plug 'tpope/vim-commentary'
+
+
 " Git gutter
 Plug 'airblade/vim-gitgutter'
 
@@ -321,6 +332,7 @@ else
     Plug 'roxma/vim-hug-neovim-rpc'
 endif
 let g:deoplete#enable_at_startup = 1
+
 
 " Language extensions
 "
