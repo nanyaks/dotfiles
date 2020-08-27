@@ -361,6 +361,7 @@ let g:deoplete#enable_at_startup = 1
 " " Plugin outside ~/.vim/plugged with post-update hook
 " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " " Unmanaged plugin (manually installed and updated)
 " Plug '~/my-prototype-plugin'
@@ -418,6 +419,9 @@ nnoremap <leader>gs :Gstatus<cr>
 
 
 " FZF
+" Remove the statusline
+let g:fzf_nvim_statusline = 0
+
 " This is the default extra key bindings
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
@@ -469,6 +473,9 @@ let g:fzf_colors =
 "   'previous-history' instead of 'down' and 'up'.
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 
+" End FZF configuration
+
+
 "  CtrlP configuration  {{{3
 
 " set runtimepath^=~/.nvim/bundle/ctrlp.vim
@@ -476,7 +483,6 @@ let g:fzf_history_dir = '~/.local/share/fzf-history'
 " let g:ctrlp_switch_buffer = 'Et'
 " let g:ctrlp_open_multiple_files = 'i'   " Select multiple <c-z>, <c-o> open.
 " let g:ctrlp_open_new_file = 'v'         " New file from CtrlP with name <c-y>
-
 " let g:ctrlp_mruf_max = 350
 " let g:ctrlp_mruf_exclude = '/tmp/.*\|/temp/.*'
 " let g:ctrlp_mruf_relative = 1           " Remember mru from CWD
