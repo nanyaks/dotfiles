@@ -1,8 +1,8 @@
 " Core Settings {{{1
 
 " Filetype {{{2
-" filetype plugin indent on
-" syntax on
+filetype plugin indent on
+syntax on
 syntax enable
 
 " General Settings for the whole file {{{2
@@ -84,7 +84,6 @@ set tabstop=4
 
 " Lists {{{2
 set list
-" set listchars=tab:┊\ ,extends:›,precedes:‹,nbsp:·,trail:·
 set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
 set linebreak
 
@@ -184,14 +183,12 @@ augroup Markdown " {{{2
     autocmd BufNewFile,BufRead *.{txt,text} set filetype=markdown
 augroup END
 
-
 " Configure Python
 augroup Python " {{{2
     autocmd!
     autocmd FileType python set textwidth=79 | set tabstop=4 | set shiftwidth=4 | set expandtab | set softtabstop=4 | set shiftround | set autoindent
     " autocmd BufWritePost *.py call Flake8()
 augroup END
-
 
 " Configure EJS
 augroup Ejs " {{{2
@@ -201,7 +198,6 @@ augroup END
 
 
 "  Functions {{{1
-"
 function! RenameFile() " {{{2
     let old_name = expand('%')
     let new_name = input('New File Name: ', expand('%'), 'file')
@@ -224,6 +220,7 @@ function! NeatFoldText() "{{{2
     return foldtextstart . repeat(foldchar, winwidth(0)-foldtextlength) . foldtextend
 endfunction
 
+
 function! LessToCss()
     " Auto update less files to css @nanyaks implementation Sat Aug 30 12:44:59 2014
     let current_file = shellescape(expand('%:p'))
@@ -241,6 +238,8 @@ autocmd BufWritePost,FileWritePost *.less call LessToCss()
 
 
 "  Abbreviations {{{1
+"  '_t' for the time
+"  '_dt' for datetime in iso format
 if exists("*strftime")
     iabbrev _t <c-r>=strftime('%H:%M -')<cr>
     iabbrev _dt <c-r>=strftime("%c")<cr>
@@ -278,11 +277,10 @@ noremap <leader>n :call RenameFile()<cr>
 " Other configurations {{{1
 
 " Omnicomplete {{{2
-set omnifunc=syntaxcomplete#Complete
+" set omnifunc=syntaxcomplete#Complete
 
 " Always show the statusline {{{2
 set laststatus=2
-
 
 
 
@@ -333,6 +331,9 @@ else
 endif
 let g:deoplete#enable_at_startup = 1
 
+" FZF
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " Language extensions
 "
@@ -360,8 +361,6 @@ let g:deoplete#enable_at_startup = 1
 
 " " Plugin outside ~/.vim/plugged with post-update hook
 " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
 
 " " Unmanaged plugin (manually installed and updated)
 " Plug '~/my-prototype-plugin'
